@@ -10,6 +10,9 @@ namespace InliningTest
     {
         protected override string ExecuteInternal()
         {
+            // Remark:  This method is inlined in VS2015 RC in Release mode (in VS2013 it's not)
+            //          Inlining will cause that "GetCallingAssembly" in nested "GetContextInfo" 
+            //          method will not return current assembly.
             var name = GetContextInfo();
             return name;
         }
